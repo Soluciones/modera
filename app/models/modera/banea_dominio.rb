@@ -19,7 +19,7 @@ module Modera
     end
 
     def self.lista
-      BaneaDominio.pluck(:dominio)
+      pluck(:dominio)
     end
   end
 end
