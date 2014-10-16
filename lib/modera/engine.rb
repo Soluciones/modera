@@ -1,6 +1,7 @@
 require 'inherited_resources'
 require 'haml-rails'
 require 'sass'
+require 'jquery-rails'
 
 module Modera
   class Engine < ::Rails::Engine
