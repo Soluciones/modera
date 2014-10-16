@@ -1,3 +1,7 @@
+require 'inherited_resources'
+require 'haml-rails'
+require 'sass'
+
 module Modera
   class Engine < ::Rails::Engine
     isolate_namespace Modera

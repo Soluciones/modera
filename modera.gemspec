@@ -18,13 +18,13 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'haml-rails'
   s.add_dependency 'sass'
+  s.add_dependency 'inherited_resources'
 
   s.add_development_dependency 'pg'
 
   s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'rspec-collection_matchers'
   s.add_development_dependency 'ffaker'
-  s.add_development_dependency 'capybara-rails'
   s.add_development_dependency 'database_cleaner'
   s.add_development_dependency 'shoulda-matchers'
   s.add_development_dependency 'factory_girl_rails'
