@@ -1,0 +1,43 @@
+# Archivo sacado de https://github.com/svenfuchs/rails-i18n/tree/master/rails/locale
+es:
+  errors: &errors
+    format: ! '%{message}'
+    models:
+      voto:
+        attributes:
+          contenido_id:
+            taken: 'Ya has votado este mensaje'
+    messages:
+      accepted: '%{attribute} debe ser aceptado'
+      blank: '%{attribute} no puede estar en blanco'
+      confirmation: '%{attribute} no coincide con la confirmación'
+      empty: '%{attribute} no puede estar vacío'
+      equal_to: '%{attribute} debe ser igual a %{count}'
+      even: '%{attribute} debe ser par'
+      exclusion: '%{attribute} está reservado'
+      greater_than: '%{attribute} debe ser mayor que %{count}'
+      greater_than_or_equal_to: '%{attribute} debe ser mayor que o igual a %{count}'
+      inclusion: '%{attribute} no está incluido en la lista'
+      invalid: '%{attribute} no es válido'
+      less_than: '%{attribute} debe ser menor que %{count}'
+      less_than_or_equal_to: '%{attribute} debe ser menor que o igual a %{count}'
+      not_a_number: '%{attribute} no es un número'
+      not_an_integer: '%{attribute} debe ser un entero'
+      odd: '%{attribute} debe ser impar'
+      record_invalid: ! 'La validación falló: %{errors}'
+      taken: '%{attribute} ya está en uso'
+      too_long: '%{attribute} es demasiado largo (%{count} caracteres máximo)'
+      too_short: '%{attribute} es demasiado corto (%{count} caracteres mínimo)'
+      wrong_length: '%{attribute} no tiene la longitud correcta (%{count} caracteres exactos)'
+    template:
+      body: ! 'Revise que los siguientes campos sean válidos:'
+      header:
+        one:   El siguiente error ha impedido poder guardar tu aportación
+        other: Estos %{count} errores han impedido poder guardar tu aportación
+  # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
+  activemodel:
+    errors:
+      <<: *errors
+  activerecord:
+    errors:
+      <<: *errors
