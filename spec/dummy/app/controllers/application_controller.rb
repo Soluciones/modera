@@ -7,11 +7,11 @@ class ApplicationController < ActionController::Base
 
   def gestor_usr_required
     unless soy_gestor_usr?
-      envia_a_login("Debe identificarse como gestor de usuarios para acceder")
+      envia_a_login('Debe identificarse como gestor de usuarios para acceder')
     end
   end
 
-  def envia_a_login(mensaje)
+  def envia_a_login(_mensaje)
     true
   end
 end
