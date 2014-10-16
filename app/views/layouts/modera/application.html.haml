@@ -1,0 +1,9 @@
+!!!
+%html
+  %head
+    %title Modera
+    = stylesheet_link_tag    "modera/application", media: "all"
+    = javascript_include_tag "modera/application"
+    = csrf_meta_tags
+  %body
+    = yield
