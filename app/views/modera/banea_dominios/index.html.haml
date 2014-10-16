@@ -1,0 +1,16 @@
+%h1 Lista de dominios de correo baneados
+
+= link_to 'Añadir dominio baneado', new_banea_dominio_path
+%br/
+%br/
+%table.tabla
+  %tr.cabecera_roja
+    %th Dominio
+    %th Control
+    %th
+
+  - @banea_dominios.each do |dominio_baneado|
+    %tr{ class: cycle('impar', 'par') }
+      %td= dominio_baneado.dominio
+      %td= link_to 'Editar', edit_banea_dominio_path(dominio_baneado)
+      %td= link_to 'Borrar', dominio_baneado, method: :delete, data: { confirm: '¿Estás seguro?' }
