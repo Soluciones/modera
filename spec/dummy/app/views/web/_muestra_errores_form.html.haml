@@ -1,0 +1,9 @@
+- if variable and variable.errors.any?
+  #errorExplanation
+    %b
+      - n_errores = variable.errors.full_messages.length
+      - mensaje_generico = t('errors.template.header', count: n_errores)
+      #{ t("errors.template.header.#{ variable.class.model_name.name.downcase }", count: n_errores, default: mensaje_generico) }:
+    %ul
+      - variable.errors.full_messages.each do |msg|
+        %li= msg
