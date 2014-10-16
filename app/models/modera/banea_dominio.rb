@@ -2,8 +2,6 @@ module Modera
   class BaneaDominio < ActiveRecord::Base
     NO_BANEABLES = %w(gmail yahoo hotmail)
 
-    scope :lista, -> { BaneaDominio.all.map(&:dominio) }
-
     validates :dominio, presence: true, uniqueness: true
     validate :es_baneable
 
@@ -18,6 +16,10 @@ module Modera
       elsif NO_BANEABLES.any? { |no_baneable| dominio.include?(no_baneable) || no_baneable.include?(dominio) }
         errors.add(:dominio, 'Este dominio no puede ser baneado')
       end
+    end
+
+    def self.lista
+      BaneaDominio.pluck(:dominio)
     end
   end
 end
