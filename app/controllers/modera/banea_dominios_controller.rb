@@ -1,6 +1,5 @@
 module Modera
   class BaneaDominiosController < InheritedResources::Base
-    before_filter :punto_retorno_login
     before_filter :gestor_usr_required
 
     def create
