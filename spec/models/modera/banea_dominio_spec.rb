@@ -4,7 +4,7 @@ module Modera
   describe BaneaDominio do
     describe 'validation test' do
       let(:error_caracteres) { 'El dominio introducido tiene carácters inválidos' }
-      let(:error_extension) { 'Las extensiones de dominio no se pueden banear' }
+      let(:error_sufijo) { 'Los sufijos de dominio no se pueden banear' }
       let(:error_dominio) { 'Este dominio no puede ser baneado' }
 
       before { stub_const('Modera::BaneaDominio::NO_BANEABLES', %w(gmail yahoo.com)) }
@@ -21,10 +21,10 @@ module Modera
       it { is_expected.not_to allow_value('yahoo.com').for(:dominio).with_message(error_dominio) }
       it { is_expected.not_to allow_value('yahoo.com.mx').for(:dominio).with_message(error_dominio) }
 
-      it { is_expected.not_to allow_value('.com').for(:dominio).with_message(error_extension) }
-      it { is_expected.not_to allow_value('com').for(:dominio).with_message(error_extension) }
-      it { is_expected.not_to allow_value('.es').for(:dominio).with_message(error_extension) }
-      it { is_expected.not_to allow_value('es').for(:dominio).with_message(error_extension) }
+      it { is_expected.not_to allow_value('.com').for(:dominio).with_message(error_sufijo) }
+      it { is_expected.not_to allow_value('com').for(:dominio).with_message(error_sufijo) }
+      it { is_expected.not_to allow_value('.es').for(:dominio).with_message(error_sufijo) }
+      it { is_expected.not_to allow_value('es').for(:dominio).with_message(error_sufijo) }
 
       it { is_expected.not_to allow_value('@gmail.com').for(:dominio).with_message(error_caracteres) }
       it { is_expected.not_to allow_value('domin?o').for(:dominio).with_message(error_caracteres) }

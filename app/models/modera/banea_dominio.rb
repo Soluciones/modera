@@ -18,14 +18,14 @@ module Modera
 
       if dominio_con_caracteres_invalidos?
         errors.add(:dominio, 'El dominio introducido tiene carácters inválidos')
-      elsif dominio_es_una_extension?
-        errors.add(:dominio, 'Las extensiones de dominio no se pueden banear')
+      elsif dominio_es_un_sufijo?
+        errors.add(:dominio, 'Los sufijos de dominio no se pueden banear')
       elsif dominio_listado_como_no_baneable?
         errors.add(:dominio, 'Este dominio no puede ser baneado')
       end
     end
 
-    def dominio_es_una_extension?
+    def dominio_es_un_sufijo?
       dominio =~ /\A\.?[a-z]{1,3}\z/i
     end
 
@@ -35,10 +35,10 @@ module Modera
 
     def dominio_listado_como_no_baneable?
       subdominio = '([a-z\-\d]+\.)'
-      extension = '(\.[a-z]{2,3})'
+      sufijo = '(\.[a-z]{2,3})'
 
       NO_BANEABLES.any? do |no_baneable|
-        dominio =~ /\A#{ subdominio }*#{ no_baneable }#{ extension }{,2}\z/i
+        dominio =~ /\A#{ subdominio }*#{ no_baneable }#{ sufijo }{,2}\z/i
       end
     end
   end
