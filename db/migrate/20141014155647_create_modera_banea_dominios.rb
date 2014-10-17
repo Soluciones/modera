@@ -3,6 +3,7 @@ class CreateModeraBaneaDominios < ActiveRecord::Migration
     create_table :modera_banea_dominios do |t|
       t.string :dominio
 
+      t.string :updated_usuario, null: false
       t.timestamps
     end
 

@@ -1,9 +1,8 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
+  include ApplicationHelper, EmergiaHelper
   protect_from_forgery with: :exception
 
-  include ApplicationHelper, EmergiaHelper
+  before_filter :establece_usuario
 
   def gestor_usr_required
     unless soy_gestor_usr?
@@ -13,5 +12,11 @@ class ApplicationController < ActionController::Base
 
   def envia_a_login(_mensaje)
     true
+  end
+
+  protected
+
+  def establece_usuario
+    @yo ||= OpenStruct.new(nick: 'nick-usuario')
   end
 end
