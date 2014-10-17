@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20141014155647) do
   enable_extension "plpgsql"
 
   create_table "modera_banea_dominios", force: true do |t|
-    t.string   "dominio"
+    t.string   "dominio",         null: false
     t.string   "updated_usuario", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
