@@ -19,5 +19,9 @@ module Modera
     def permitted_params
       params.permit(banea_dominio: [:dominio])
     end
+
+    def collection
+      @banea_dominios ||= end_of_association_chain.order(:dominio)
+    end
   end
 end
