@@ -24,18 +24,18 @@ module Modera
     end
 
     def dominio_con_formato_incorrecto?
-      formato_dominio = '[a-z\d\-]+'
-      formato_sufijo = '(\.[a-z]+)'
+      formato_dominio = '[a-z\d\-]+\.'
+      formato_sufijo = '[a-z]+'
 
-      dominio !~ /\A#{ formato_dominio }(\.#{ formato_dominio })*#{ formato_sufijo }+\z/i
+      dominio !~ /\A(#{ formato_dominio })+#{ formato_sufijo }\z/i
     end
 
     def dominio_listado_como_no_baneable?
-      formato_subdominio = '([a-z\d\-]+\.)'
-      formato_sufijo = '(\.[a-z]+)'
+      formato_subdominio = '[a-z\d\-]+\.'
+      formato_sufijo = '\.[a-z]+'
 
       NO_BANEABLES.any? do |no_baneable|
-        dominio =~ /\A#{ formato_subdominio }*#{ no_baneable }#{ formato_sufijo }{,2}\z/i
+        dominio =~ /\A(#{ formato_subdominio })*#{ no_baneable }(#{ formato_sufijo }){,2}\z/i
       end
     end
   end
