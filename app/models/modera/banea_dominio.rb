@@ -16,29 +16,26 @@ module Modera
     def dominio_es_baneable
       return if dominio.blank?
 
-      if dominio_con_caracteres_invalidos?
-        errors.add(:dominio, 'El dominio introducido tiene carácters inválidos')
-      elsif dominio_es_un_sufijo?
-        errors.add(:dominio, 'Los sufijos de dominio no se pueden banear')
+      if dominio_con_formato_incorrecto?
+        errors.add(:dominio, 'El dominio introducido tiene un formato incorrecto')
       elsif dominio_listado_como_no_baneable?
         errors.add(:dominio, 'Este dominio no puede ser baneado')
       end
     end
 
-    def dominio_es_un_sufijo?
-      dominio =~ /\A\.?[a-z]{1,3}\z/i
-    end
+    def dominio_con_formato_incorrecto?
+      formato_dominio = '[a-z\d\-]+'
+      formato_sufijo = '(\.[a-z]+)'
 
-    def dominio_con_caracteres_invalidos?
-      dominio =~ /[^a-z0-9\.-]/i
+      dominio !~ /\A#{ formato_dominio }(\.#{ formato_dominio })*#{ formato_sufijo }+\z/i
     end
 
     def dominio_listado_como_no_baneable?
-      subdominio = '([a-z\-\d]+\.)'
-      sufijo = '(\.[a-z]{2,3})'
+      formato_subdominio = '([a-z\d\-]+\.)'
+      formato_sufijo = '(\.[a-z]+)'
 
       NO_BANEABLES.any? do |no_baneable|
-        dominio =~ /\A#{ subdominio }*#{ no_baneable }#{ sufijo }{,2}\z/i
+        dominio =~ /\A#{ formato_subdominio }*#{ no_baneable }#{ formato_sufijo }{,2}\z/i
       end
     end
   end
