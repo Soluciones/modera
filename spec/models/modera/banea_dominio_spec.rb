@@ -10,41 +10,23 @@ module Modera
 
       it { is_expected.to validate_presence_of(:dominio).with_message('Dominio no puede estar en blanco') }
 
-      it { is_expected.not_to allow_value('gmail').for(:dominio).with_message(error_formato) }
-      it { is_expected.not_to allow_value('gmail.com').for(:dominio).with_message(error_dominio) }
-      it { is_expected.not_to allow_value('gmail.com.mx').for(:dominio).with_message(error_dominio) }
-      it { is_expected.not_to allow_value('subdominio.gmail').for(:dominio).with_message(error_dominio) }
-      it { is_expected.not_to allow_value('subdominio.gmail.com').for(:dominio).with_message(error_dominio) }
-      it { is_expected.not_to allow_value('subdominio.gmail.com.mx').for(:dominio).with_message(error_dominio) }
+      %w(.com com .es es @gmail.com domin?o dominio.c_om gmai
+         gmail2 gmail yahoo dominio domi_nio.es dominio.e1s)
+      .each do |dominio|
+        it { is_expected.not_to allow_value(dominio).for(:dominio).with_message(error_formato) }
+      end
 
-      it { is_expected.not_to allow_value('.com').for(:dominio).with_message(error_formato) }
-      it { is_expected.not_to allow_value('com').for(:dominio).with_message(error_formato) }
-      it { is_expected.not_to allow_value('.es').for(:dominio).with_message(error_formato) }
-      it { is_expected.not_to allow_value('es').for(:dominio).with_message(error_formato) }
+      %w(gmail.com gmail.com.mx subdominio.gmail subdominio.gmail.com
+         subdominio.gmail.com.mx yahoo.com yahoo.com.mx)
+      .each do |dominio|
+        it { is_expected.not_to allow_value(dominio).for(:dominio).with_message(error_dominio) }
+      end
 
-      it { is_expected.not_to allow_value('@gmail.com').for(:dominio).with_message(error_formato) }
-      it { is_expected.not_to allow_value('domin?o').for(:dominio).with_message(error_formato) }
-      it { is_expected.not_to allow_value('dominio.c_om').for(:dominio).with_message(error_formato) }
-
-      it { is_expected.not_to allow_value('gmai').for(:dominio).with_message(error_formato) }
-      it { is_expected.not_to allow_value('gmail2').for(:dominio).with_message(error_formato) }
-      it { is_expected.to allow_value('gmai.com').for(:dominio) }
-      it { is_expected.to allow_value('gmail2.co.uk').for(:dominio) }
-      it { is_expected.to allow_value('gmail.co.uk.mx').for(:dominio) }
-
-      it { is_expected.not_to allow_value('yahoo').for(:dominio).with_message(error_formato) }
-      it { is_expected.not_to allow_value('yahoo.com').for(:dominio).with_message(error_dominio) }
-      it { is_expected.not_to allow_value('yahoo.com.mx').for(:dominio).with_message(error_dominio) }
-      it { is_expected.to allow_value('yahoo.es').for(:dominio) }
-      it { is_expected.to allow_value('yaho.com').for(:dominio) }
-
-      it { is_expected.not_to allow_value('dominio').for(:dominio).with_message(error_formato) }
-      it { is_expected.not_to allow_value('domi_nio.es').for(:dominio).with_message(error_formato) }
-      it { is_expected.to allow_value('domi-ni0.es').for(:dominio) }
-      it { is_expected.to allow_value('dominio.es').for(:dominio) }
-      it { is_expected.to allow_value('subdominio.dominio.com').for(:dominio) }
-      it { is_expected.to allow_value('sub-dominio1.subdominio2.dominio.com').for(:dominio) }
-      it { is_expected.to allow_value('sub-dominio1.subdominio2.dominio').for(:dominio) }
+      %w(gmai.com gmail2.co.uk gmail.co.uk.mx yahoo.es yaho.com domi-ni0.es dominio.es subdominio.dominio.com
+         sub-dominio1.subdominio2.dominio.com sub-dominio1.subdominio2.dominio)
+      .each do |dominio|
+        it { is_expected.to allow_value(dominio).for(:dominio) }
+      end
     end
   end
 end
