@@ -8,10 +8,10 @@ module Modera::ValidaEmail
 
   included do
     validates :email,
-      uniqueness: { message: 'Ese correo electrónico ya está registrado.', case_sensitive: false },
-      format: { with: EMAIL_FORMATO, message: 'Tienes que introducir un correo electrónico válido.' },
-      length: { maximum: 50, message: 'El correo electrónico introducido es demasiado largo.' },
-      confirmation: { message: 'El correo electrónico introducido no coincide con el de confirmación.' }
+              uniqueness: { message: 'Ese correo electrónico ya está registrado.', case_sensitive: false },
+              format: { with: EMAIL_FORMATO, message: 'Tienes que introducir un correo electrónico válido.' },
+              length: { maximum: 50, message: 'El correo electrónico introducido es demasiado largo.' },
+              confirmation: { message: 'El correo electrónico introducido no coincide con el de confirmación.' }
     validate :email_con_dominio_permitido
   end
 
