@@ -10,7 +10,7 @@
     %th
 
   - @banea_dominios.each do |dominio_baneado|
-    %tr{ class: cycle('impar', 'par') }
+    %tr
       %td= dominio_baneado.dominio
       %td= link_to 'Editar', edit_banea_dominio_path(dominio_baneado)
       %td= link_to 'Borrar', dominio_baneado, method: :delete, data: { confirm: '¿Estás seguro?' }
