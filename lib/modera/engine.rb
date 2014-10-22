@@ -12,5 +12,9 @@ module Modera
       g.fixture_replacement :factory_girl, dir: 'spec/factories'
       g.template_engine :haml
     end
+
+    initializer 'modera.assets.precompile' do |app|
+      app.config.assets.precompile += %w(application.css)
+    end
   end
 end
