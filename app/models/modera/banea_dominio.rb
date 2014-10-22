@@ -1,6 +1,6 @@
 module Modera
   class BaneaDominio < ActiveRecord::Base
-    NO_BANEABLES = %w(gmail yahoo hotmail outlook live.com telefonica movistar rankia)
+    NO_BANEABLES = %w(gmail yahoo hotmail outlook live.com telefonica movistar rankia verema)
 
     validates :dominio, presence: true, uniqueness: true
     validate :dominio_es_baneable
