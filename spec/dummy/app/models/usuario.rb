@@ -1,3 +1,3 @@
 class Usuario < ActiveRecord::Base
-  include Modera::ValidaEmail
+  include Modera::ValidaDominioEmail
 end
