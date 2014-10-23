@@ -9,7 +9,7 @@ module Modera::ValidaDominioEmail
     return unless respond_to?(:email) && email.present?
 
     dominio = email.split('@').last
-    if Modera::BaneaDominio.lista.include? dominio.downcase
+    if Modera::BaneaDominio.pluck(:dominio).include? dominio.downcase
       errors.add(:email, 'Este proveedor de correo electrónico no está permitido.')
     end
   end

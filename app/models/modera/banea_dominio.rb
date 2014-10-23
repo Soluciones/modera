@@ -7,10 +7,6 @@ module Modera
 
     before_validation { dominio.try(:downcase!) }
 
-    def self.lista
-      pluck(:dominio)
-    end
-
     protected
 
     def dominio_es_baneable
