@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    modera (0.0.1)
+    modera (1.0.0)
       haml-rails
       inherited_resources
       jquery-rails
