@@ -1,0 +1,5 @@
+= form_for @banea_dominio do |f|
+  = render 'web/muestra_errores_form', variable: @banea_dominio
+  = f.label(:dominio, 'Dominio:')
+  = f.text_field :dominio, required: true, autofocus: true, placeholder: 'Ej: trashmail.com'
+  = f.submit 'Guardar'
