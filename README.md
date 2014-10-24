@@ -34,6 +34,10 @@ Habrá que importar las migraciones a la app principal que vaya a usar el engine
 
 `config/initializers/engines.rb`: Aquí se le pasan las clases externas que el engine necesita, en formato `Modera::Clases.xxx_extern = 'Xxx'`
 
+### Cargar CSS del engine en la APP
+
+`*= require modera/application`: Añadirlo en el application.css de la App host.
+
 ### Configurar para que use la working copy local
 
     > bundle config local.modera ../modera
