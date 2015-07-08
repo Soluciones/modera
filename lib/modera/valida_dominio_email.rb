@@ -3,7 +3,7 @@ require 'active_support/concern'
 module Modera::ValidaDominioEmail
   extend ActiveSupport::Concern
 
-  included { validate :email_con_dominio_permitido }
+  included { validate :email_con_dominio_permitido, on: :create }
 
   def email_con_dominio_permitido
     return unless respond_to?(:email) && email.present?

@@ -17,7 +17,7 @@ module Modera
 
         it 'no permite un email con el dominio baneado' do
           email_dominio_baneado = "usuario@#{ dominio_baneado.dominio }"
-          is_expected.not_to allow_value(email_dominio_baneado).for(:email).with_message(error)
+          is_expected.not_to allow_value(email_dominio_baneado).for(:email).on(:create).with_message(error)
         end
 
         it 'permite un email cuyo dominio es subdominio del baneado' do
