@@ -31,7 +31,7 @@ module Modera
         end
 
         it 'permite un email com dominio diferente al baneado' do
-          email_dominio_permitido = Faker::Internet.email
+          email_dominio_permitido = FFaker::Internet.email
           is_expected.to allow_value(email_dominio_permitido).for(:email)
         end
       end
