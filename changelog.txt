@@ -1,0 +1,1 @@
+[1.1.1] Validating only on create, so that existing users with banned domains won't be a problem
