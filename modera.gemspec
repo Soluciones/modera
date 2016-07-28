@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rails', '~> 4.2.3'
 
-  s.add_dependency 'haml-rails'
+  s.add_dependency 'hamlit-rails'
   s.add_dependency 'sass'
   s.add_dependency 'inherited_resources'
   s.add_dependency 'jquery-rails'
