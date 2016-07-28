@@ -1,5 +1,5 @@
 require 'inherited_resources'
-require 'haml-rails'
+require 'hamlit-rails'
 require 'sass'
 require 'jquery-rails'
 
